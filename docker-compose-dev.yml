@@ -1,0 +1,48 @@
+version: "3.8"
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    container_name: app_frontend
+    volumes:
+      - /app/node_modules #개발환경에서 코드 수정시 node_modules은 호스트의 node_modules를 참조하지 않음.
+      - ./frontend:/app
+    stdin_open: true #react app 종료시 발생하는 버그를 잡아줌
+    ports:
+      - "5173:5173"
+
+  # proxy nginx
+  nginx:
+    restart: always #재시작 정책
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8080:80"
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    container_name: app_backend
+    volumes:
+      - /app/node_modules #개발환경에서 코드 수정시 node_modules은 호스트의 node_modules를 참조하지 않음.
+      - ./backend:/app
+    depends_on:
+      - mysql
+
+  mysql:
+    restart: unless-stopped
+    build:
+      context: ./mysql
+      dockerfile: Dockerfile
+    container_name: app_mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql/mysql_data:/var/lib/mysql # volumes으로 data 유지
+      - ./mysql/sql/:/docker-entrypoint-initdb.d/ #initialize
+    environment:
+      MYSQL_ROOT_PASSWORD: xorudA0805!
+      MYSQL_DATABASE: myapp
