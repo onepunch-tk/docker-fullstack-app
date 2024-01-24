@@ -44,5 +44,5 @@ services:
       - ./mysql/mysql_data:/var/lib/mysql # volumes으로 data 유지
       - ./mysql/sql/:/docker-entrypoint-initdb.d/ #initialize
     environment:
-      MYSQL_ROOT_PASSWORD: xorudA0805!
+      MYSQL_ROOT_PASSWORD: "my password"
       MYSQL_DATABASE: myapp
