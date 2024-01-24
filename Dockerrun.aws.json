@@ -1,0 +1,33 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "app_frontend",
+      "image": "86tkstar/docker-frontend",
+      "essential": false,
+      "memory": 128
+    },
+    {
+      "name": "app_backend",
+      "image": "86tkstar/docker-backend",
+      "essential": false,
+      "memory": 128
+    },
+    {
+      "name": "nginx",
+      "image": "86tkstar/docker-nginx",
+      "essential": true,
+      "memory": 128,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": [
+        "frontend",
+        "backend"
+      ]
+    }
+  ]
+}

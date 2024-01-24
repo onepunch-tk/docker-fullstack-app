@@ -27,3 +27,9 @@ services:
     volumes:
       - /app/node_modules #개발환경에서 코드 수정시 node_modules은 호스트의 node_modules를 참조하지 않음.
       - ./backend:/app
+    environment:
+      MYSQL_HOST: app_mysql
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: xorudA0805!
+      MYSQL_DATABASE: myapp
+      MYSQL_PORT: 3306
