@@ -7,8 +7,8 @@ const config: Config = {
   setupFilesAfterEnv: ["<rootDir>/src/setupTests.ts"],
   moduleNameMapper: {
     // SVG 파일을 모의 객체로 리다이렉트
-    "\\.svg$": "<rootDir>/src/__mocks__/svgMock.cjs",
-    "\\.css$": "<rootDir>/src/__mocks__/styleMock.cjs",
+    "\\.svg$": "<rootDir>/src/__mocks__/svgMock.ts",
+    "\\.css$": "<rootDir>/src/__mocks__/styleMock.ts",
   },
 };
 
