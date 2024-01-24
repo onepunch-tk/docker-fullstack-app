@@ -20,7 +20,7 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
       - name: Build Docker Image for Tests
-        run: docker build -t 86tkstar/react-test-app -f ./frontend/Dockerfile.dev .
+        run: docker build -t 86tkstar/react-test-app -f ./frontend/Dockerfile.dev ./frontend
 
       - name: Run Tests
         run: docker run 86tkstar/react-test-app npm test
