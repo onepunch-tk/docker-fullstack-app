@@ -29,11 +29,13 @@ jobs:
         uses: jakejarvis/s3-sync-action@master
         with:
           args: --acl private
-          bucket: ${{ secrets.S3_BUCKET_NAME }}
-          key_id: ${{ secrets.AWS_ACCESS_KEY }}
-          secret_access_key: ${{ secrets.AWS_SECRET_KEY }}
-          source_dir: dockercfg
-          destination_dir: index.docker.io
+        env:
+          AWS_S3_BUCKET: ${{ secrets.S3_BUCKET_NAME }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
+          AWS_REGION: 'ap-northeast-2'
+          SOURCE_DIR: 'dockercfg'
+          DEST_DIR: 'index.docker.io'
 
       - name: Build Docker Image for Tests
         run: docker build -t 86tkstar/react-test-app -f ./frontend/Dockerfile.dev ./frontend
