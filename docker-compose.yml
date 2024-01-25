@@ -2,6 +2,7 @@ version: "3.8"
 services:
   frontend:
     image: 86tkstar/docker-fullstack-app:frontend-latest
+    container_name: app_frontend
     volumes:
       - /app/node_modules #개발환경에서 코드 수정시 node_modules은 호스트의 node_modules를 참조하지 않음.
       - ./frontend:/app
@@ -11,6 +12,7 @@ services:
   nginx:
     restart: always #재시작 정책
     image: 86tkstar/docker-fullstack-app:nginx-latest
+    container_name: proxy-nginx
     ports:
       - "80:80"
 
