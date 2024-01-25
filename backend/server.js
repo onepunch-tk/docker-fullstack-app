@@ -7,14 +7,14 @@ const app = express();
 app.use(bodyParser.json());
 
 pool.query(
-  `CREATE TABLE lists (
+    `CREATE TABLE lists (
     id INTEGER AUTO_INCREMENT,
-    value TEXT
+    value TEXT,
     PRIMARY KEY (id)
-);`,
-  (error, results, field) => {
-    console.log("results:", results);
-  }
+  );`,
+    (error, results, field) => {
+        console.log("results:", results);
+    }
 );
 
 app.get("/api/values", (req, res) => {
