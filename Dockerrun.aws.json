@@ -3,19 +3,19 @@
   "containerDefinitions": [
     {
       "name": "app_frontend",
-      "image": "86tkstar/docker-frontend",
+      "image": "86tkstar/docker-fullstack-app:frontend-lastest",
       "essential": false,
       "memory": 128
     },
     {
       "name": "app_backend",
-      "image": "86tkstar/docker-backend",
+      "image": "86tkstar/docker-fullstack-app:backend-latest",
       "essential": false,
       "memory": 128
     },
     {
       "name": "nginx",
-      "image": "86tkstar/docker-nginx",
+      "image": "86tkstar/docker-fullstack-app:nginx-latest",
       "essential": true,
       "memory": 128,
       "portMappings": [
