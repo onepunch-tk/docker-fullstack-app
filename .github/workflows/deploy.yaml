@@ -59,7 +59,7 @@ jobs:
           docker push 86tkstar/docker-fullstack-app:nginx-latest
 
       - name: Generate deployment package
-        run: zip -r deploy.zip . -x '*.git*'
+        run: zip deploy.zip docker-compose.yml Dockerrun.aws.json
 
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v21
