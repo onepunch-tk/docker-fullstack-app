@@ -1,5 +1,9 @@
 {
   "AWSEBDockerrunVersion": "3",
+  "Authentication": {
+    "bucket": "86tkstar-docker",
+    "key": "index.docker.io/.dockercfg"
+  },
   "containerDefinitions": [
     {
       "name": "app_frontend",
