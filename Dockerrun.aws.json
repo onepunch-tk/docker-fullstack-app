@@ -29,8 +29,8 @@
         }
       ],
       "links": [
-        "frontend",
-        "backend"
+        "app_frontend",
+        "app_backend"
       ]
     }
   ]
