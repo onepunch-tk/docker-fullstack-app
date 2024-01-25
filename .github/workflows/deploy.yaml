@@ -25,4 +25,33 @@ jobs:
       - name: Run Tests
         run: docker run 86tkstar/react-test-app npm test
 
+      - name: Build and Push Backend Image
+        run: |
+          docker build -t 86tkstar/docker-fullstack-app:backend-latest ./backend
+          docker push 86tkstar/docker-fullstack-app:backend-latest
+
+      - name: Build and Push Frontend Image
+        run: |
+          docker build -t 86tkstar/docker-fullstack-app:frontend-latest ./frontend
+          docker push 86tkstar/docker-fullstack-app:frontend-latest
+
+      - name: Build and Push Nginx Image
+        run: |
+          docker build -t 86tkstar/docker-fullstack-app:nginx-latest ./nginx
+          docker push 86tkstar/docker-fullstack-app:nginx-latest
+
+      - name: Generate deployment package
+        run: zip -r deploy.zip . -x '*.git*'
+
+      - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v21
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
+          application_name: fullstack-docker-app
+          environment_name: Fullstack-docker-app-env
+          version_label: ${{ github.sha }}
+          region: ap-northeast-2
+          deployment_package: deploy.zip
+
 
