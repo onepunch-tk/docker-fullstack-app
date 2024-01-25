@@ -11,7 +11,7 @@ pool.query(
     id INTEGER AUTO_INCREMENT,
     value TEXT
     PRIMARY KEY (id)
-)`,
+);`,
   (error, results, field) => {
     console.log("results:", results);
   }
