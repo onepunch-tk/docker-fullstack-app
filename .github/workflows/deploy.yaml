@@ -19,6 +19,9 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
+      - name: Generate .dockercfg
+        run: echo "{\"auths\":{\"https://index.docker.io/v1/\":{\"auth\":\"$(echo -n ${{ secrets.DOCKER_HUB_USERNAME }}:${{ secrets.DOCKER_HUB_ACCESS_TOKEN }} | base64)\"}}}" > .dockercfg
+
       - name: Build Docker Image for Tests
         run: docker build -t 86tkstar/react-test-app -f ./frontend/Dockerfile.dev ./frontend
 
