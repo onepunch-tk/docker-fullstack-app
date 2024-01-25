@@ -48,8 +48,8 @@ jobs:
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
           aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
-          application_name: fullstack-docker-app
-          environment_name: Fullstack-docker-app-env
+          application_name: docker-fullstack-app-2
+          environment_name: Docker-fullstack-app-2-env
           version_label: ${{ github.sha }}
           region: ap-northeast-2
           deployment_package: deploy.zip
