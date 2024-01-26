@@ -3,22 +3,6 @@
   "Authentication": {
     "bucket": "86tkstar-docker",
     "key": "index.docker.io/.dockercfg"
-  },
-  "containerDefinitions": [
-    {
-      "image": "86tkstar/docker-fullstack-app:frontend-lastest",
-      "essential": false,
-      "memory": 128
-    },
-    {
-      "image": "86tkstar/docker-fullstack-app:backend-latest",
-      "essential": false,
-      "memory": 128
-    },
-    {
-      "image": "86tkstar/docker-fullstack-app:nginx-latest",
-      "essential": true,
-      "memory": 128
-    }
-  ]
+  }
+
 }
