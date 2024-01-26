@@ -1,5 +1,5 @@
 {
-  "AWSEBDockerrunVersion": "2",
+  "AWSEBDockerrunVersion": "3",
   "Authentication": {
     "bucket": "86tkstar-docker",
     "key": "index.docker.io/.dockercfg"
