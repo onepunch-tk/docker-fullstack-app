@@ -1,0 +1,23 @@
+version: "3.8"
+services:
+  frontend:
+    image: 86tkstar/docker-fullstack-app:frontend-latest
+    container_name: app_frontend
+    stdin_open: true #react app 종료시 발생하는 버그를 잡아줌
+
+  # proxy nginx
+  nginx:
+    restart: always #재시작 정책
+    image: 86tkstar/docker-fullstack-app:nginx-latest
+    container_name: proxy-nginx
+
+  backend:
+    image: 86tkstar/docker-fullstack-app:backend-latest
+    container_name: app_backend
+    environment:
+      MYSQL_HOST: $MYSQL_HOST
+      MYSQL_USER: $MYSQL_USER
+      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+      MYSQL_DATABASE: $MYSQL_DATABASE
+      MYSQL_PORT: $MYSQL_PORT
+
