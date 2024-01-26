@@ -58,8 +58,17 @@ jobs:
           docker build -t 86tkstar/docker-fullstack-app:nginx-latest ./nginx
           docker push 86tkstar/docker-fullstack-app:nginx-latest
 
-#      - name: Generate deployment package
-#        run: zip deploy.zip Dockerrun.aws.json docker-compose.yml
+      - name: Generate deployment package
+        run: zip deploy.zip Dockerrun.aws.json docker-compose.yml
+
+      - name: Cleanup old application versions
+        run: |
+#          AWS CLI를 사용하여 이전 애플리케이션 버전 목록 가져오기
+          old_versions=$(aws elasticbeanstalk describe-application-versions --application-name docker-fullstack-app-2 --query 'ApplicationVersions[?VersionLabel!=`current-version`].VersionLabel' --output text)
+#         각 이전 버전에 대해 삭제 명령 실행
+          for version in $old_versions; do
+            aws elasticbeanstalk delete-application-version --application-name docker-fullstack-app-2 --version-label $version --delete-source-bundle
+          done
 
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v21
@@ -71,7 +80,7 @@ jobs:
           existing_bucket_name: elasticbeanstalk-ap-northeast-2-486157951835
           version_label: ${{ github.sha }}
           region: ap-northeast-2
-#          deployment_package: deploy.zip
+          deployment_package: deploy.zip
           use_existing_version_if_available: true
 
 

@@ -18,17 +18,7 @@
     {
       "image": "86tkstar/docker-fullstack-app:nginx-latest",
       "essential": true,
-      "memory": 128,
-      "portMappings": [
-        {
-          "hostPort": 80,
-          "containerPort": 80
-        }
-      ],
-      "links": [
-        "app_frontend",
-        "app_backend"
-      ]
+      "memory": 128
     }
   ]
 }
