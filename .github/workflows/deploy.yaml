@@ -58,8 +58,8 @@ jobs:
           docker build -t 86tkstar/docker-fullstack-app:nginx-latest ./nginx
           docker push 86tkstar/docker-fullstack-app:nginx-latest
 
-      - name: Generate deployment package
-        run: zip deploy.zip Dockerrun.aws.json docker-compose.yml
+#      - name: Generate deployment package
+#        run: zip deploy.zip Dockerrun.aws.json docker-compose.yml
 
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v21
@@ -71,7 +71,7 @@ jobs:
           existing_bucket_name: elasticbeanstalk-ap-northeast-2-486157951835
           version_label: ${{ github.sha }}
           region: ap-northeast-2
-          deployment_package: deploy.zip
+#          deployment_package: deploy.zip
           use_existing_version_if_available: true
 
 
