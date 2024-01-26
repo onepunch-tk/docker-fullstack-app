@@ -30,7 +30,7 @@
       ]
     },
     {
-      "name": "nginx",
+      "name": "nginx-proxy",
       "image": "86tkstar/docker-fullstack-app:nginx-latest",
       "essential": true,
       "memory": 128,
