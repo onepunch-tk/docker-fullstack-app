@@ -9,6 +9,7 @@ services:
   nginx:
     restart: always #재시작 정책
     image: 86tkstar/docker-fullstack-app:nginx-latest
+    container_name: nginx-proxy
     ports:
       - "80:80"
 

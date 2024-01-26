@@ -6,19 +6,16 @@
   },
   "containerDefinitions": [
     {
-      "name": "app_frontend",
       "image": "86tkstar/docker-fullstack-app:frontend-lastest",
       "essential": false,
       "memory": 128
     },
     {
-      "name": "app_backend",
       "image": "86tkstar/docker-fullstack-app:backend-latest",
       "essential": false,
       "memory": 128
     },
     {
-      "name": "nginx-proxy",
       "image": "86tkstar/docker-fullstack-app:nginx-latest",
       "essential": true,
       "memory": 128,
