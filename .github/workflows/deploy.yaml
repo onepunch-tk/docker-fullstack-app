@@ -34,7 +34,7 @@ jobs:
       - name: Upload .dockercfg to S3
         uses: jakejarvis/s3-sync-action@master
         with:
-          args: —acl private
+          args: --acl private
         env:
           AWS_S3_BUCKET: ${{ secrets.S3_BUCKET_NAME }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
